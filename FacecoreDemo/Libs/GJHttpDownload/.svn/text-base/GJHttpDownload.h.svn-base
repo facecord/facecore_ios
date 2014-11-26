@@ -1,0 +1,52 @@
+//
+//  GJAppDelegate.h
+//  HappyWork
+//
+//  Created by 高健大人辛苦了 on 14-2-15.
+//  Copyright (c) 2014年 高健大人辛苦了. All rights reserved.
+//
+
+
+#import <Foundation/Foundation.h>
+#import "ASIHTTPRequest.h"
+
+@interface GJHttpDownload : NSObject <ASIHTTPRequestDelegate> {
+    NSURL *_url;
+    id _target;
+    SEL _selector;
+    NSData *_resData;
+    SEL _aselector;
+    id _object;
+    BOOL isobj;
+}
+@property (retain,nonatomic) NSData *resData;
+
+// 攘外一次调用进行网络下载 
++ (id) downloadWithUrl:(NSString *)urlstring withTarget:(id)t withSelector:(SEL)s anotherSelector:(SEL)as withType:(NSString *)type;
++ (id) downloadWithUrl:(NSString *)urlstring withTarget:(id)t withSelector:(SEL)s anotherSelector:(SEL)as withType:(NSString *)type andObject:(id)object;
+
+- (NSData *) responseData;
+
++(NSUInteger)cacheSize;
+
++(void)setCacheTime:(NSTimeInterval)time;
+
+#define TYPE_REFRESH @"refresh"
+
+#define TYPE_DOWNLOAD @"download"
+
+#define HTTP_URL @"http://115.29.32.120:8078/?msg="
+//http://115.29.32.120:8078/?msg=
+#define PIC_HTTP @"http://192.168.1.104"
+
+#define REALHTTP_URL @"http://115.29.32.120:8088/?msg="
+
+//192.168.1.113:8089
+//http://192.168.1.102/SaveDir/201404/201447135256517.png
+//192.168.1.109:8088
+
+//192.168.1.110:10000
+
+//192.168.1.122:8088
+
+@end
